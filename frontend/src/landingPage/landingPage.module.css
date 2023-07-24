@@ -1,0 +1,33 @@
+.mainWrapper {
+  height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
+  background-color: brown;
+}
+
+.subWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem;
+  width: 100%;
+  gap: 2rem;
+}
+
+.productCard {
+  display: flex;
+  min-width: 15rem;
+  min-height: 15rem;
+  flex-direction: column;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid aqua;
+  border-radius: 5px;
+}
+
+.productCard span {
+  color: whitesmoke;
+}
