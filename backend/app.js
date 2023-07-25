@@ -1,12 +1,16 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const feedRoutes = require("./routes/feed");
 
-const MONGODB_URI =
-  "mongodb+srv://sriram:Dhanam.@cluster0.ywltvdr.mongodb.net/own?retryWrites=true&w=majority";
+dotenv.config();
+const MONGODB_URI = process.env.MONGO_CONNECTION;
 
 const app = express();
+
+app.use(cors());
 
 // app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
 app.use(bodyParser.json()); // application/json
@@ -26,7 +30,7 @@ app.use("/feed", feedRoutes);
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(3001);
+    app.listen(process.env.PORT || 3001);
   })
   .catch((err) => {
     console.log(err);

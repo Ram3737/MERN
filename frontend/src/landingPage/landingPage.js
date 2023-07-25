@@ -7,7 +7,12 @@ function LandingPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/feed/posts", {})
+      .get("http://localhost:3001/feed/posts", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         if (response.data.posts) {
           setArr(response.data.posts);
