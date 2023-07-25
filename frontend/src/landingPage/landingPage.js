@@ -7,7 +7,7 @@ function LandingPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/feed/posts", {
+      .get("https://first-mern-y32l.onrender.com/feed/posts", {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
