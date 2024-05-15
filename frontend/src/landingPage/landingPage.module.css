@@ -1,33 +1,323 @@
+/* Ensure the mainWrapper takes up the full viewport height and centers its content horizontally */
 .mainWrapper {
   height: 100vh;
   max-width: 1500px;
   margin: 0 auto;
-  background-color: brown;
+  overflow-y: scroll;
+  position: relative;
 }
 
-.subWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 2rem;
+/* Make the videoBackground fill the mainWrapper */
+.videoBackground {
   width: 100%;
-  gap: 2rem;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Ensure the video takes up the full width and height of its container */
+.videoBackground video {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.overlayContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Ensure the overlayContent appears on top of the video */
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
 }
 
 .productCard {
   display: flex;
-  min-width: 15rem;
-  min-height: 15rem;
+  min-width: 100%;
+  height: 100%;
   flex-direction: column;
   padding: 1rem;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.2);
+  justify-content: center;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-blend-mode: overlay;
+  background-size: cover;
+  backdrop-filter: blur(2px);
   border: 1px solid aqua;
   border-radius: 5px;
 }
 
+.productCard img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.h1Cont {
+  height: 5.5rem;
+  margin-bottom: 2rem;
+}
+
+.h1Cont h1 {
+  /* background: linear-gradient(
+    280.2deg,
+    #9af7ff 12.72%,
+    #422ef7 58.73%,
+    #26fa5f 101.06%
+  ); */
+
+  color: aqua;
+  background-clip: text;
+  /* color: transparent; */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 5rem;
+  font-family: greycliff-cf, sans-serif;
+  font-weight: 600;
+  overflow: hidden; /* Ensure the text doesn't overflow */
+  white-space: nowrap; /* Prevent line breaks in the animation */
+  animation: typing 2s steps(40) infinite;
+}
+
 .productCard span {
-  color: whitesmoke;
+  font-family: greycliff-cf, sans-serif;
+  font-size: 2rem;
+  color: #d6dae6;
+  text-align: center;
+}
+
+.subWrapper1 {
+  height: 40rem;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.subWrapper1 span {
+  color: aqua;
+  font-size: 3rem;
+  text-align: center;
+  animation: glitch 1s ease infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    transform: translate(8px); /* Adjust the glitch translate value as needed */
+  }
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  4%,
+  100% {
+    text-shadow: none;
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 683px) {
+  .h1Cont {
+    height: 4.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .h1Cont h1 {
+    /* background: linear-gradient(
+      280.2deg,
+      #9af7ff 12.72%,
+      #422ef7 58.73%,
+      #26fa5f 101.06%
+    ); */
+
+    color: aqua;
+    background-clip: text;
+    /* color: transparent; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 4rem;
+    font-family: greycliff-cf, sans-serif;
+    font-weight: 600;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent line breaks in the animation */
+    animation: typing 2s steps(40) infinite;
+  }
+
+  .productCard span {
+    font-family: greycliff-cf, sans-serif;
+    font-size: 1.8rem;
+    color: #d6dae6;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .overlayContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the overlayContent appears on top of the video */
+    width: 100%;
+    height: 93%;
+    padding: 1rem;
+  }
+
+  .h1Cont {
+    height: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .h1Cont h1 {
+    /* background: linear-gradient(
+      280.2deg,
+      #9af7ff 12.72%,
+      #422ef7 58.73%,
+      #26fa5f 101.06%
+    ); */
+
+    color: aqua;
+    background-clip: text;
+    /* color: transparent; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 3.5rem;
+    font-family: greycliff-cf, sans-serif;
+    font-weight: 600;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent line breaks in the animation */
+    animation: typing 2s steps(40) infinite;
+  }
+
+  .productCard span {
+    font-family: greycliff-cf, sans-serif;
+    font-size: 1.7rem;
+    color: #d6dae6;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 513px) {
+  .overlayContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure the overlayContent appears on top of the video */
+    width: 100%;
+    height: 93%;
+    padding: 1rem;
+  }
+
+  .h1Cont {
+    height: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .h1Cont h1 {
+    /* background: linear-gradient(
+      280.2deg,
+      #9af7ff 12.72%,
+      #422ef7 58.73%,
+      #26fa5f 101.06%
+    ); */
+
+    color: aqua;
+    background-clip: text;
+    /* color: transparent; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 3rem;
+    font-family: greycliff-cf, sans-serif;
+    font-weight: 600;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent line breaks in the animation */
+    animation: typing 2s steps(40) infinite;
+  }
+
+  .productCard span {
+    font-family: greycliff-cf, sans-serif;
+    font-size: 1.7rem;
+    color: #d6dae6;
+    text-align: center;
+  }
+
+  .subWrapper1 span {
+    color: aqua;
+    font-size: 2.5rem;
+    text-align: center;
+    animation: glitch 1s ease infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+      transform: translate(
+        8px
+      ); /* Adjust the glitch translate value as needed */
+    }
+    2% {
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    4%,
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .h1Cont {
+    height: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .h1Cont h1 {
+    /* background: linear-gradient(
+      280.2deg,
+      #9af7ff 12.72%,
+      #422ef7 58.73%,
+      #26fa5f 101.06%
+    ); */
+
+    color: aqua;
+    background-clip: text;
+    /* color: transparent; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 2.5rem;
+    font-family: greycliff-cf, sans-serif;
+    font-weight: 600;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent line breaks in the animation */
+    animation: typing 2s steps(40) infinite;
+  }
+
+  .productCard span {
+    font-family: greycliff-cf, sans-serif;
+    font-size: 1.5rem;
+    color: #d6dae6;
+    text-align: center;
+  }
+
+  .subWrapper1 span {
+    color: aqua;
+    font-size: 2rem;
+    text-align: center;
+    animation: glitch 1s ease infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+      transform: translate(
+        8px
+      ); /* Adjust the glitch translate value as needed */
+    }
+    2% {
+      text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    4%,
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
 }
