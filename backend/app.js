@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const feedRoutes = require("./routes/feed");
 const contactRoutes = require("./routes/contact");
+const pdfRoutes = require("./routes/pdfRoutes");
 
 dotenv.config();
 const MONGODB_URI = process.env.MONGO_CONNECTION;
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 
 app.use("/feed", feedRoutes);
 app.use("/contact", contactRoutes);
+app.use("/pdf", pdfRoutes);
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
